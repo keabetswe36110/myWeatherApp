@@ -14,13 +14,16 @@ body{
     background-position: center;
     background-repeat:no-repeat;
     width: 100%;
+    
 }
 .flex{
     display: flex;
 }
 .main-inner{
     width: 80%;
+    box-shadow: 10px 10px rgba(80, 51, 160, 0.397);
     /* background-color: beige; */
+    border-radius: 20px;
 
 }
 .justify-center{
