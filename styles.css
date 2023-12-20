@@ -1,3 +1,96 @@
+:root{
+    --white : white;
+
+}
 body{
     margin: 0;
+    height: 100vh;
+    
+}
+.main-container{
+    /* height: 100vh; */
+    background-image: url("images/beautiful-skyscape-during-daytime.jpg");
+    background-size: 1300px 1000px;
+    background-position: center;
+    background-repeat:no-repeat;
+    width: 100%;
+}
+.flex{
+    display: flex;
+}
+.main-inner{
+    width: 80%;
+    /* background-color: beige; */
+
+}
+.justify-center{
+    justify-content: center;
+}
+.search-input{
+    width: 80%;
+    height: 40px;
+    border-radius: 15px;
+    margin-top: 29px;
+    padding: 30px;
+    padding-left: 45px;
+    box-sizing: border-box;
+    background-color:#ffffff87;
+    border: none;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.search-icon{
+    top: 50px;
+    left: 110px;
+}
+.color-white{
+    color: var(--white);
+}
+.search-location{
+    width: 100%;
+}
+.clouds img{
+    
+    height: 100px;
+}
+.colomn{
+    flex-direction: column;
+}
+.align-center{
+    align-items: center;
+}
+.text-center{
+    text-align: center;
+}
+.details{
+    background-color: rgba(158, 165, 230, 0.63);
+    border-radius: 15px;
+}
+.width{
+    width: 80%;
+}
+.gap-icon{
+    gap: 5px;
+}
+.details h3{
+    margin: 2px;
+}
+.time-interval div{
+    background-color: rgba(158, 165, 230, 0.63);
+    width: 100px;
+    border-radius: 30px;
+    text-align: center;
+}
+.time-interval{
+    width: 100%;
+}
+.gap-1em{
+    gap: 2em;
+}
+.margin-1px{
+    margin: 5px;
 }

@@ -3,9 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>git hub</title>
+    <title>My weather APP</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
-    waiting for the perfect design.
+    <div class="main-container flex justify-center align-center">
+        <div class="main-inner align-center flex colomn">
+            <div class="search-location flex justify-center relative">
+                <input class="search-input " type="text" placeholder="Find your city">
+                <span class="search-icon material-symbols-outlined absolute" style="color: #757575;">search</span>
+            </div>
+            <div class="clouds flex justify-center color-white colomn align-center">
+                <div class="city-name">
+                    <h1>Ga-maja</h1>
+                </div>
+                <img src="./images/420-4201880_clipart-of-partly-cloudy-and-comments-partly-cloudy.png" alt="clouds">
+            </div>
+            <div class="degree flex justify-center align-center text-center">
+                <div class="deg color-white">
+                    <h1 class="margin-1px">28 'c</h1>
+                    <h3 class="margin-1px">partly cloudy</h3>
+                </div>
+            </div>
+            <div class="details color-white width">
+                <h3 class="text-center">20 december 2023</h3>
+                <div class="time flex align-center gap-icon">
+                    <span class="material-symbols-outlined" style="margin-left: 20px;">schedule</span>
+                    <h3>local time 1:12pm</h3>
+                </div>
+                <div class="humanity flex align-center gap-icon">
+                    <span class="material-symbols-outlined" style="margin-left: 20px;">dew_point</span>
+                    <h3>humanity 85%</h3>
+                </div> 
+                <div class="wind flex align-center gap-icon">
+                    <span class="material-symbols-outlined" style="margin-left: 20px;">air</span>
+                    <h3>wind 30km/h</h3>
+                </div>         
+            </div>
+            <div><h3 class="margin-1px color-white">Today</h3></div>
+            <!-- ======================time interval Divs============================== -->
+            <div class="time-interval color-white flex gap-1em justify-center">
+                
+                <div>
+                    <h4>now</h4>
+                    <span class="material-symbols-outlined" >sunny</span>
+                    <h4>24'c</h4>
+                </div>
+                <div>
+                    <h4 >2 pm</h4>
+                    <span class="material-symbols-outlined" >sunny</span>
+                    <h4>24'c</h4>
+                </div>
+                <div>
+                    <h4>4 pm</h4>
+                    <span class="material-symbols-outlined" >sunny</span>
+                    <h4>24'c</h4>
+                </div>
+                <div>
+                    <h4>6 pm</h4>
+                    <span class="material-symbols-outlined">sunny</span>
+                    <h4>24'c</h4>
+                </div>
+                <div>
+                    <h4>8 pm</h4>
+                    <span class="material-symbols-outlined">sunny</span>
+                    <h4>24'c</h4>
+                </div>
+                <div>
+                    <h4>8 pm</h4>
+                    <span class="material-symbols-outlined">sunny</span>
+                    <h4>24'c</h4>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script src="./index.js"></script>
 </body>
 </html>
