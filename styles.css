@@ -6,7 +6,7 @@ body{
     margin: 0;
     height: 100vh;
 
-    
+
     
 }
 .main-container{
@@ -19,6 +19,7 @@ body{
     
 }
 .flex{
+    
     display: flex;
 }
 .main-inner{
