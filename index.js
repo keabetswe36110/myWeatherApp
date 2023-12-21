@@ -1,5 +1,7 @@
 const myApi = "https://api.openweathermap.org/data/2.5/weather?lat=-25.7478676&lon=28.2292712&appid=27d67740c13712be69d1960c02c030eb";
 let mydata =[];
+const details = document.getElementById("details");
+
 fetch(myApi)
     .then(response => {
       if (!response.ok) {
@@ -10,7 +12,7 @@ fetch(myApi)
     .then(data => {
     //   console.log(data);
       mydata.push(data);
-      console.log(mydata[0].main.humidity)
+    //   console.log(mydata[0].main.humidity)
     })
     .catch(error => {
       console.error('Error:', error);
@@ -18,7 +20,9 @@ fetch(myApi)
     console.log(mydata)
 
 
-const humanity = document.getElementById("humanity");
+
+
+// const humanity = document.getElementById("humanity");
 
 // humanity.innerHTML = `humidity : ${mydata[0]}`
 
@@ -29,63 +33,64 @@ let hours = new Date().getHours();
 let minutes = new Date().getMinutes();
 let last ;
 
-
-
-
 let s = new Date();
 let use = s.getDay();
 let day ;
 let month =s.getMonth();
 let newMonth;
 
-localTime.innerHTML = `local time is ${hours} : ${minutes} ${pmAm(hours)}`
+
+// localTime.innerHTML = `local time is `
 
 
 function getDay(use){
     if (use==0) {
-        day = "sunday"
+       return day = "sunday"
     } else if(use == 1){
-        day = "monday"
+       return day = "monday"
     }else if(use == 2){
-        day = "Tuesday"
+       return day = "Tuesday"
     }else if(use == 3){
-        day = "wednesday"
+       return day = "wednesday"
     }else if(use == 4){
-        day = "thursday"
+       return day = "thursday"
     }else if(use == 5){
-        day = "Friday"
+       return day = "Friday"
     }else{
-        day = "saturday"
+       return day = "saturday"
     }
     console.log(day)
 }
+console.log(getDay(use));
+
+
 
 function getMonth(month){
     if (month == 11) {
-        newMonth = "December"
+        return newMonth = "December"
     } else if(month==12){
-        newMonth = "January"
+        return newMonth = "January"
     }
     else if(month == 1){
-        newMonth = "February"
+        return newMonth = "February"
     }else if(month == 2){
-        newMonth = "March"
+        return newMonth = "March"
     }else if(month == 3){
-        newMonth = "April"
+        return newMonth = "April"
     }else if(month == 4){
-        newMonth = "May"
+        return newMonth = "May"
     }else if(month == 5){
-        newMonth = "June"
+        return newMonth = "June"
     }else if(month == 6){
-        newMonth = "July"
+        return newMonth = "July"
     }else if(month == 7){
-        newMonth = "August"
+        return newMonth = "August"
     }else if(month == 8){
-        newMonth = "September"
+        return newMonth = "September"
     }else if(month==9){
         newMonth = "October"
     }else if(month == 10){
-        newMonth = "November"
+        return newMonth = "November"
     }
     console.log(newMonth)
 }
@@ -96,5 +101,20 @@ function pmAm(hours){
         return last = 'pm'
     }
 }
+
+
+details.innerHTML = `<h3 class="text-center" >${use} ${getMonth(month)} ${s.getFullYear()}</h3>
+<div class="time flex align-center gap-icon">
+<span class="material-symbols-outlined" style="margin-left: 20px;">schedule</span>
+<h3 id="local-time">local time is ${s.getHours()} : ${s.getMinutes()} ${pmAm(hours)}</h3>
+</div>
+<div class="humanity flex align-center gap-icon">
+    <span class="material-symbols-outlined" style="margin-left: 20px;">dew_point</span>
+    <h3 id="humanity">humanity </h3>
+</div> 
+<div class="wind flex align-center gap-icon">
+    <span class="material-symbols-outlined" style="margin-left: 20px;">air</span>
+    <h3>wind 30km/h</h3>
+</div>`
 
 
