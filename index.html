@@ -11,19 +11,20 @@
     <div class="main-container flex justify-center align-center">
         <div class="main-inner align-center flex colomn">
             <div class="search-location flex justify-center relative">
-                <input class="search-input " type="text" placeholder="Find your city">
+                <input id="search-input" class="search-input " type="text" placeholder="Find your city">
+                <button id="search">search</button>
                 <span class="search-icon material-symbols-outlined absolute" style="color: #757575;">search</span>
             </div>
             <div class="clouds flex justify-center color-white colomn align-center">
                 <div class="city-name">
-                    <h1>Ga-maja</h1>
+                    <h1 id="city"></h1>
                 </div>
-                <img src="./images/420-4201880_clipart-of-partly-cloudy-and-comments-partly-cloudy.png" alt="clouds">
+                <img id="icon" src="" alt="clouds">
             </div>
             <div class="degree flex justify-center align-center text-center">
                 <div class="deg color-white">
-                    <h1 class="margin-1px">28 'c</h1>
-                    <h3 class="margin-1px">partly cloudy</h3>
+                    <h1 id="temp" class="margin-1px"></h1>
+                    <h3 id="description" class="margin-1px"></h3>
                 </div>
             </div>
             <!-- ================cloned div ==============================================-->
