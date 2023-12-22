@@ -142,11 +142,11 @@ let weather = {
     }
 
 }
-const search = document.getElementById("search");
-search.addEventListener("click", function(){
-    weather.searchWeather();
+// const search = document.getElementById("search");
+// search.addEventListener("click", function(){
+//     weather.searchWeather();
 
-})
+// })
 document.getElementById("search-input").addEventListener('keyup',function(event) {
     if(event.key == "Enter"){
         weather.searchWeather();
