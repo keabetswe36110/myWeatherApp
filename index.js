@@ -10,24 +10,26 @@
 //       return response.json();
 //     })
 //     .then(data => {
-//     //   console.log(data);
+//       console.log(data);
 //       mydata.push(data);
+      
 //     //   console.log(mydata[0].main.humidity)
 //     })
 //     .catch(error => {
 //       console.error('Error:', error);
 //     });
-//     console.log(mydata)
+//     // console.log(mydata[0])
+//     console.log(mydata[0].main.humidity);
 
 
 
 
-// // const humanity = document.getElementById("humanity");
+// const humanity = document.getElementById("humanity");
 
-// // humanity.innerHTML = `humidity : ${mydata[0]}`
+// humanity.innerHTML = `humidity : ${mydata[0]}`
 
 
-// // ================geting time=============
+// ================geting time=============
 const localTime = document.getElementById("local-time");
 const lastD = document.getElementById("last")
 let hours = new Date().getHours();
@@ -102,6 +104,7 @@ function pmAm(hours) {
         return last = 'pm'
     }
 }
+// new = https://api.openweathermap.org/data/2.5/forecast?q=polokwane&appid=27d67740c13712be69d1960c02c030eb
 
 let weather = {
     apiKey: "27d67740c13712be69d1960c02c030eb",
@@ -113,6 +116,7 @@ let weather = {
             .then(response => response.json())
             .then((data) => this.displayWeather(data))
 
+
     }, displayWeather: function (data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
@@ -123,7 +127,7 @@ let weather = {
         document.querySelector("#icon").src = 'https://openweathermap.org/img/w/' + icon + ".png"
         document.querySelector("#description").innerHTML = description;
         document.querySelector("#temp").innerHTML = temp + `<span>&deg</span>`;
-        details.innerHTML = `<h3 class="text-center" >${s.getDay()} ${getMonth(month)} ${s.getFullYear()}</h3>
+        details.innerHTML = `<h3 class="text-center" >${s.getDate()} ${getMonth(month)} ${s.getFullYear()}</h3>
                             <div class="time flex align-center gap-icon">
                                 <span class="material-symbols-outlined" style="margin-left: 20px;">schedule</span>
                                 <h3 id="local-time">local time is ${s.getHours()} : ${s.getMinutes()} ${pmAm(hours)}</h3>
