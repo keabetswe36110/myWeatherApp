@@ -173,6 +173,7 @@ const getWeatherDetails = (cityName, lat,lon) => {
 
          console.log(fiveDaysForecast); 
          fiveDaysForecast.forEach((item,i) => {
+
             document.getElementById("day"+i).innerHTML = `<h4>${item.dt_txt.split(" ")[0]}</h4>
             <img id="icon${i}" src="https://openweathermap.org/img/w/${item.weather[0].icon}.png" alt="idk">
             <h5>${(item.main.temp - 273.15).toFixed(2)}&deg</h5>
