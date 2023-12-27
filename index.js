@@ -120,10 +120,10 @@ let weather = {
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
         console.log(name, icon, temp, humidity, speed, description);
-        document.querySelector('#city').innerHTML = "weather in " + name;
-        document.querySelector("#icon").src = 'https://openweathermap.org/img/w/' + icon + ".png"
-        document.querySelector("#description").innerHTML = description;
-        document.querySelector("#temp").innerHTML = temp + `<span>&deg</span>`;
+        document.getElementById('city').innerHTML = "weather in " + name;
+        document.getElementById("icon").src = 'https://openweathermap.org/img/wn/' + icon + "@2x.png"
+        document.getElementById("description").innerHTML = description;
+        document.getElementById("temp").innerHTML = temp + `<span>&deg</span>`;
         details.innerHTML = `<h3 class="text-center" >${s.getDate()} ${getMonth(month)} ${s.getFullYear()}</h3>
                             <div class="time flex align-center gap-icon">
                                 <span class="material-symbols-outlined" style="margin-left: 20px;">schedule</span>
@@ -145,8 +145,10 @@ let weather = {
 }
 document.getElementById("search-input").addEventListener('keyup',function(event) {
     if(event.key == "Enter"){
+        document.getElementById("welcome").style.display = "none";
         weather.searchWeather();
         getCityCoordinates();
+        document.getElementById("search-input").value = "";
     }
 })
 
@@ -172,8 +174,9 @@ const getWeatherDetails = (cityName, lat,lon) => {
          console.log(fiveDaysForecast); 
          fiveDaysForecast.forEach((item,i) => {
             document.getElementById("day"+i).innerHTML = `<h4>${item.dt_txt.split(" ")[0]}</h4>
-            <h4>24'c</h4>`
-            document.querySelector(`#icon${0}`).src = "https://openweathermap.org/img/w/" + item.weather[0].icon + ".png"
+            <img id="icon${i}" src="https://openweathermap.org/img/w/${item.weather[0].icon}.png" alt="idk">
+            <h5>${(item.main.temp - 273.15).toFixed(2)}&deg</h5>
+            <h5>${item.weather[0].description}</h5>`
             
          });
     }).catch(()=>{
