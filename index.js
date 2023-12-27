@@ -29,6 +29,8 @@
 // humanity.innerHTML = `humidity : ${mydata[0]}`
 
 
+// =====================================================working current method===================================
+
 // ================geting time=============
 const localTime = document.getElementById("local-time");
 const lastD = document.getElementById("last")
@@ -41,10 +43,6 @@ let use = s.getDay();
 let day;
 let month = s.getMonth();
 let newMonth;
-
-
-// localTime.innerHTML = `local time is `
-
 
 function getDay(use) {
     if (use == 0) {
@@ -104,7 +102,6 @@ function pmAm(hours) {
         return last = 'pm'
     }
 }
-// new = https://api.openweathermap.org/data/2.5/forecast?q=polokwane&appid=27d67740c13712be69d1960c02c030eb
 
 let weather = {
     apiKey: "27d67740c13712be69d1960c02c030eb",
@@ -146,16 +143,59 @@ let weather = {
     }
 
 }
-// const search = document.getElementById("search");
-// search.addEventListener("click", function(){
-//     weather.searchWeather();
-
-// })
 document.getElementById("search-input").addEventListener('keyup',function(event) {
     if(event.key == "Enter"){
         weather.searchWeather();
+        getCityCoordinates();
     }
 })
+
+// ======================================second Trial==============================================
+
+
+const API_KEY = "27d67740c13712be69d1960c02c030eb";
+
+
+const getWeatherDetails = (cityName, lat,lon) => {
+    const WEATHER_API_URL = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+    
+    fetch(WEATHER_API_URL).then(res => res.json()).then(data =>{
+         
+         const uniqueForecastDays = [];
+         const fiveDaysForecast = data.list.filter(forecast => {
+            const forecastDate = new Date(forecast.dt_txt).getDate();
+            if(!uniqueForecastDays.includes(forecastDate)){
+                return uniqueForecastDays.push(forecastDate);
+            }
+         });
+
+         console.log(fiveDaysForecast); 
+         fiveDaysForecast.forEach((item,i) => {
+            document.getElementById("day"+i).innerHTML = `<h4>${item.dt_txt.split(" ")[0]}</h4>
+            <h4>24'c</h4>`
+            document.querySelector(`#icon${0}`).src = "https://openweathermap.org/img/w/" + item.weather[0].icon + ".png"
+            
+         });
+    }).catch(()=>{
+        alert("an error has occured while fetching the weather forecast")
+    });
+}
+
+const getCityCoordinates = () => {
+    const cityName = document.getElementById("search-input").value.trim();
+    if(!cityName) return;
+    const GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=27d67740c13712be69d1960c02c030eb`;
+
+    // ===========get entered city coordinates from API response========
+    fetch(GEOCODING_API_URL).then(res => res.json()).then(data =>{
+        if(!data.length)return alert(`NO cordinates found for ${cityName}`);
+        const{name, lat, lon} = data[0];
+        getWeatherDetails(name, lat, lon);
+    }).catch(()=>{
+        alert("an error has occured while fetching the coordinates")
+    });
+}
+
 
 
 
