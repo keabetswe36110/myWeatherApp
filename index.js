@@ -173,7 +173,12 @@ const getWeatherDetails = (cityName, lat,lon) => {
 
          console.log(fiveDaysForecast); 
          fiveDaysForecast.forEach((item,i) => {
-
+            if(item.dt_txt.split(" ")[0] == new Date().getDate){
+                const todayDate = "current day"
+                console.log(todayDate);
+            }else{
+                console.log("not matched")
+            }
             document.getElementById("day"+i).innerHTML = `<h4>${item.dt_txt.split(" ")[0]}</h4>
             <img id="icon${i}" src="https://openweathermap.org/img/w/${item.weather[0].icon}.png" alt="idk">
             <h5>${(item.main.temp - 273.15).toFixed(2)}&deg</h5>
