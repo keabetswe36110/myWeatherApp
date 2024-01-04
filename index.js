@@ -1,37 +1,7 @@
-// const myApi = "https://api.openweathermap.org/data/2.5/weather?lat=-25.7478676&lon=28.2292712&appid=27d67740c13712be69d1960c02c030eb";
-// let mydata =[];
-// const details = document.getElementById("details");
-
-// fetch(myApi)
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-//       return response.json();
-//     })
-//     .then(data => {
-//       console.log(data);
-//       mydata.push(data);
-      
-//     //   console.log(mydata[0].main.humidity)
-//     })
-//     .catch(error => {
-//       console.error('Error:', error);
-//     });
-//     // console.log(mydata[0])
-//     console.log(mydata[0].main.humidity);
-
-
-
-
-// const humanity = document.getElementById("humanity");
-
-// humanity.innerHTML = `humidity : ${mydata[0]}`
-
 
 // =====================================================working current method===================================
 
-// ================geting time=============
+// =========================================================geting time=============================
 const localTime = document.getElementById("local-time");
 const lastD = document.getElementById("last")
 let hours = new Date().getHours();
@@ -44,6 +14,7 @@ let day;
 let month = s.getMonth();
 let newMonth;
 
+// =======================================================display days instead of numbers==============
 function getDay(use) {
     if (use == 0) {
         return day = "sunday"
@@ -60,16 +31,13 @@ function getDay(use) {
     } else {
         return day = "saturday"
     }
-    console.log(day)
 }
-console.log(getDay(use));
-
-
+// ==========================================================display months instead of numbers================
 
 function getMonth(month) {
     if (month == 11) {
         return newMonth = "December"
-    } else if (month == 12) {
+    } else if (month == 0) {
         return newMonth = "January"
     }
     else if (month == 1) {
@@ -93,8 +61,9 @@ function getMonth(month) {
     } else if (month == 10) {
         return newMonth = "November"
     }
-    console.log(newMonth)
 }
+
+// =============================================tell if is morning or late=====================
 function pmAm(hours) {
     if (hours <= 12) {
         return last = 'am'
@@ -102,7 +71,7 @@ function pmAm(hours) {
         return last = 'pm'
     }
 }
-
+// =============================================fetch current weather API =======================
 let weather = {
     apiKey: "27d67740c13712be69d1960c02c030eb",
     fetchWeather: function (city) {
@@ -119,7 +88,7 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        console.log(name, icon, temp, humidity, speed, description);
+        // console.log(name, icon, temp, humidity, speed, description);
         document.getElementById('city').innerHTML = "weather in " + name;
         document.getElementById("icon").src = 'https://openweathermap.org/img/wn/' + icon + "@2x.png"
         document.getElementById("description").innerHTML = description;
@@ -152,7 +121,7 @@ document.getElementById("search-input").addEventListener('keyup',function(event)
     }
 })
 
-// ======================================second Trial==============================================
+// ======================================five days forecast==============================================
 
 
 const API_KEY = "27d67740c13712be69d1960c02c030eb";
@@ -175,9 +144,9 @@ const getWeatherDetails = (cityName, lat,lon) => {
          fiveDaysForecast.forEach((item,i) => {
             if(item.dt_txt.split(" ")[0] == new Date().getDate){
                 const todayDate = "current day"
-                console.log(todayDate);
+                // console.log(todayDate);
             }else{
-                console.log("not matched")
+                // console.log("not matched")
             }
             document.getElementById("day"+i).innerHTML = `<h4>${item.dt_txt.split(" ")[0]}</h4>
             <img id="icon${i}" src="https://openweathermap.org/img/w/${item.weather[0].icon}.png" alt="idk">
@@ -195,7 +164,7 @@ const getCityCoordinates = () => {
     if(!cityName) return;
     const GEOCODING_API_URL = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=27d67740c13712be69d1960c02c030eb`;
 
-    // ===========get entered city coordinates from API response========
+    // ===========get entered city coordinates from API response=========================================================
     fetch(GEOCODING_API_URL).then(res => res.json()).then(data =>{
         if(!data.length)return alert(`NO cordinates found for ${cityName}`);
         const{name, lat, lon} = data[0];
