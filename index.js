@@ -82,8 +82,6 @@ let weather = {
             + this.apiKey)
             .then(response => response.json())
             .then((data) => this.displayWeather(data))
-
-
     }, displayWeather: function (data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
@@ -133,15 +131,16 @@ const getWeatherDetails = (cityName, lat,lon) => {
     
     fetch(WEATHER_API_URL).then(res => res.json()).then(data =>{
          
-         const uniqueForecastDays = [];
+         const uniqueForecastDays = []; 
          const fiveDaysForecast = data.list.filter(forecast => {
             const forecastDate = new Date(forecast.dt_txt).getDate();
+            console.log(item)
             if(!uniqueForecastDays.includes(forecastDate)){
                 return uniqueForecastDays.push(forecastDate);
             }
          });
-
          fiveDaysForecast.forEach((item,i) => {
+            console.log("hi i am item :", item);
             if(item.dt_txt.split(" ")[0] == new Date().getDate){
                 const todayDate = "current day"
             }

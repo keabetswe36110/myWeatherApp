@@ -6,9 +6,7 @@ body{
     margin: 0;
     height: 100vh;   
 }
-
 .main-container{
-    /* height: 100vh; */
     background-image: url("images/gettyimages-1027145238-612x612.jpg");
     width: 100%;
     height: 100%;
@@ -20,7 +18,6 @@ body{
 .main-inner{
     width: 70%;
     box-shadow: 10px 10px rgba(80, 51, 160, 0.397);
-    /* background-color: beige; */
     border-radius: 20px;
     background-image: url("images/beautiful-skyscape-during-daytime.jpg");
     background-size: 1300px 1000px;
@@ -74,6 +71,7 @@ body{
     background-color: rgba(158, 165, 230, 0.63);
     border-radius: 15px;
     margin-bottom: 10px;
+    /* background-image: linear-gradient(blue,red); */
 }
 .width{
     width: 80%;
@@ -117,9 +115,18 @@ body{
     font-size: xxx-large;
     margin: 50px 0 0 0 ;
     box-sizing: border-box;
+    
+}
+marquee{
+    color: yellow;
 }
 .welcome{
     visibility: visible;
+}
+.time-interval div{
+    background-color: rgba(158, 165, 230, 0.63);
+    /* background-image: linear-gradient(red,blue); */
+    /* background-color:rgb(223, 144, 88) */
 }
 @media screen and (max-width: 670px) {
 
