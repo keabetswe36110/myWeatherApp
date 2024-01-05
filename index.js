@@ -134,7 +134,6 @@ const getWeatherDetails = (cityName, lat,lon) => {
          const uniqueForecastDays = []; 
          const fiveDaysForecast = data.list.filter(forecast => {
             const forecastDate = new Date(forecast.dt_txt).getDate();
-            console.log(item)
             if(!uniqueForecastDays.includes(forecastDate)){
                 return uniqueForecastDays.push(forecastDate);
             }
